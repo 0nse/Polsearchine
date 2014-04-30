@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+  <!-- change the project stage i.e. to Development when developing -->
+  <context-param>
+    <param-name>javax.faces.PROJECT_STAGE</param-name>
+    <param-value>Production</param-value>
+  </context-param>
+  <servlet>
+    <servlet-name>Faces Servlet</servlet-name>
+    <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <!-- file extension for faces servlets -->
+  <servlet-mapping>
+    <servlet-name>Faces Servlet</servlet-name>
+    <url-pattern>*.xhtml</url-pattern>
+  </servlet-mapping>
+  <session-config>
+    <session-timeout>
+      30
+    </session-timeout>
+  </session-config>
+  <!-- welcome page name -->
+  <welcome-file-list>
+    <welcome-file>index.xhtml</welcome-file>
+  </welcome-file-list>
+  <!-- error pages -->
+  <error-page>
+    <exception-type>javax.ejb.EJBAccessException</exception-type>
+    <location>/resources/errorPages/authentication.xhtml</location>
+  </error-page>
+  <error-page>
+    <error-code>401</error-code>
+    <location>/resources/errorPages/authentication.xhtml</location>
+  </error-page>
+  <error-page>
+    <error-code>403</error-code>
+    <location>/resources/errorPages/forbidden.xhtml</location>
+  </error-page>
+  <error-page>
+    <error-code>404</error-code>
+    <location>/resources/errorPages/fileNotFound.xhtml</location>
+  </error-page>
+  <error-page>
+    <error-code>500</error-code>
+    <location>/resources/errorPages/internalServerError.xhtml</location>
+  </error-page>
+  <!-- login configurations -->
+  <login-config>
+    <auth-method>BASIC</auth-method>
+    <realm-name>polsearchineRealm</realm-name>
+    <!-- use this if you want login pages
+         see http://docs.oracle.com/javaee/6/tutorial/doc/gkbaa.html#bncbq for
+         more information
+    <form-login-config>
+      <form-login-page>/resources/login/login.xhtml</form-login-page>
+      <form-error-page>/resources/login/loginError.xhtml</form-error-page>
+    </form-login-config>-->
+  </login-config>
+  <!-- define user group POLSEARCHINE_ADMIN -->
+  <security-role>
+    <description>A user who is allowed to enter the backend</description>
+    <role-name>POLSEARCHINE_ADMIN</role-name>
+  </security-role>
+  <!-- secure the backend with login for POLSEARCHINE_ADMINs and SSL -->
+  <security-constraint>
+    <display-name>Backend access</display-name>
+    <web-resource-collection>
+      <web-resource-name>backend</web-resource-name>
+      <description/>
+      <url-pattern>/backend/*</url-pattern>
+    </web-resource-collection>
+    <auth-constraint>
+      <description>Only an allowed user may upload or delete policies et cetera</description>
+      <role-name>POLSEARCHINE_ADMIN</role-name>
+    </auth-constraint>
+    <user-data-constraint>
+      <transport-guarantee>CONFIDENTIAL</transport-guarantee>
+    </user-data-constraint>
+  </security-constraint>
+  <!-- SSL everywhere; we do this by redirection anyway,
+  so this is redundant as long as the redirection is active -->
+  <security-constraint>
+    <display-name>Polsearchine access</display-name>
+    <web-resource-collection>
+      <web-resource-name>webpage</web-resource-name>
+      <description/>
+      <url-pattern>/*</url-pattern>
+    </web-resource-collection>
+    <user-data-constraint>
+      <transport-guarantee>CONFIDENTIAL</transport-guarantee>
+    </user-data-constraint>
+  </security-constraint>
+  <!-- enable primefaces file upload for uploading policies -->
+  <filter>
+    <filter-name>PrimeFaces FileUpload Filter</filter-name>
+    <filter-class>org.primefaces.webapp.filter.FileUploadFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>PrimeFaces FileUpload Filter</filter-name>
+    <servlet-name>Faces Servlet</servlet-name>
+  </filter-mapping>
+  <listener>
+    <listener-class>de.uni_koblenz.aggrimm.icp.servlets.InitialisationServlet</listener-class>
+  </listener>
+  <!-- remove facelet comments on rendered HTML pages -->
+  <context-param>
+    <param-name>javax.faces.FACELETS_SKIP_COMMENTS</param-name>
+    <param-value>true</param-value>
+  </context-param>
+</web-app>

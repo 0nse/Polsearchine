@@ -1,0 +1,21 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="/resources/templates/pageTemplate.xhtml">
+
+  <ui:define name="pageTitle">
+    Polsearchine · Internal Server Error
+  </ui:define>
+
+  <ui:define name="pageHeadInserts">
+    <meta http-equiv="refresh" content="0;url=/index.xhtml" />
+  </ui:define>
+ 
+  <ui:define name="pageContent">
+    <h2>500 - Internal Server Error</h2><br />
+    <p class="span5">
+      We encountered an internal server error. This is most likely to happen when you open a search page, wait for far too long and then start searching. <br/>
+      In short: your session could not be restored and you should have immediately been redirected to the start page. If this did not work, click <a href="/index.xhtml">this link</a>.
+    </p>
+  </ui:define>
+</ui:composition>  
+

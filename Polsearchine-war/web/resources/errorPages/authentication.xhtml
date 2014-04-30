@@ -1,0 +1,20 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="/resources/templates/pageTemplate.xhtml">
+
+  <ui:define name="pageTitle">
+    Polsearchine · Access denied
+  </ui:define>
+
+  <ui:define name="pageHeadInserts">
+    <meta http-equiv="refresh" content="5;url=/index.xhtml" />
+  </ui:define>
+
+  <ui:define name="pageContent">
+    <h2>401 - Access denied</h2><br />
+    <p class="span5">
+      You don't have the needed rights to view this page. Therefore you are now being redirected to the starting page. If this does not work, click <a href="/index.xhtml">this link</a>.
+    </p>
+  </ui:define>
+</ui:composition>
+

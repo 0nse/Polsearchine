@@ -1,0 +1,35 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="/resources/templates/searchTemplate.xhtml">
+
+  <ui:define name="serachNavigationButtons">
+    <li id="webNavButton">
+      <a href="/search/web.xhtml" id="searchPagesNavbutton" rel="tooltip"
+         data-title="Search for web pages matching your search term"
+         data-trigger="hover" data-placement="bottom" data-delay="500">
+        <i class="glyphicon glyphicon-globe"> </i> Search pages</a>
+    </li>
+    <li id="imageNavButton">
+      <a href="/index_image.xhtml" id="searchImagesNavbutton" rel="tooltip"
+         data-title="Search for images matching your search term"
+         data-trigger="hover" data-placement="bottom" data-delay="500">
+        <i class="glyphicon glyphicon-picture"> </i> Search images</a>
+    </li>
+  </ui:define>
+
+  <ui:define name="searchForm">
+    <ui:include src="/resources/templates/imageSearchForm.xhtml"/>
+  </ui:define>
+
+  <ui:define name="searchResultsContainerDescriptor">
+    <dl id="imageResults" />
+  </ui:define>
+
+  <ui:define name="customJS">
+    <script type="text/javascript">
+      initialiseTooltips();
+      setActiveNavButton("image");
+      monitorScrollingForReloading("image", 50);
+    </script>
+  </ui:define>
+</ui:composition>

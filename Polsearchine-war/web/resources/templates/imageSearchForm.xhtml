@@ -1,0 +1,25 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+
+  <h:form class="form-search" id="searchForm">
+    <div class="input-group input-group-lg">
+      <p:inputText type="text" tabindex="1" id="searchTerm" required="true"
+                   styleClass="form-control search-query"
+                   value="#{queryBean.searchTerm}">
+        <p:watermark value="Search for something…" for="searchTerm"/>
+        <p:focus for="searchTerm"/>
+        <f:converter converterId="encodedSearchTermConverter" />
+      </p:inputText>
+      <h:message errorClass="dontDisplay"
+                 for="searchTerm" />
+      <span class="input-group-btn">
+        <h:commandButton class="btn btn-info" tabindex="2"
+                         alt="Start the image search" action="/search/image.xhtml"
+                         value="Search" />
+      </span>
+    </div>
+  </h:form>
+</ui:composition>

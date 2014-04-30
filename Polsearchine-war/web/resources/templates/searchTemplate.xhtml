@@ -1,0 +1,21 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                template="/resources/templates/pageTemplate.xhtml">
+
+  <ui:define name="pageNavigation">
+    <ui:insert name="serachNavigationButtons" />
+    <li class="divider-vertical" />
+    <li id="resultsProvider" />
+  </ui:define>
+
+  <ui:define name="preSearchForm">
+    <h:inputHidden value="#{queryBean.searchTerm}" id="currentSearchTerm" />
+  </ui:define>
+
+  <ui:define name="postSearchForm">
+    <ui:insert name="searchResultsContainerDescriptor" />
+    <div id="resultsPlaceholder" class="label label-warning infoBanner">
+      <img src="/resources/img/ajaxloader.gif" /> Results are being loaded - please wait.</div>
+  </ui:define>
+</ui:composition>  

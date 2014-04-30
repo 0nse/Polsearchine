@@ -1,0 +1,58 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://java.sun.com/jsf/html"
+                template="/resources/templates/pageTemplate.xhtml">
+  <ui:insert name="pageTitle">
+    Polsearchine - Backend
+  </ui:insert>
+
+  <ui:define name="preSearchForm">
+    <h3>Current configuration:</h3>
+    <dl class="dl-horizontal">
+      <dt>Search engine</dt>
+      <dd>${backendBean.getSearchEngine()}</dd>
+      <dt>Path for legal texts</dt>
+      <dd>${backendBean.getLegalTextPath()}</dd>
+      <dt>Path for policy files</dt>
+      <dd>${backendBean.getOwlPath()}</dd>
+      <dt>Policy file extension</dt>
+      <dd>${backendBean.getPolicyFileExtension()}</dd>
+      <dt>IP restriction pattern</dt>
+      <dd>${backendBean.getIPRestrictionPattern()}</dd>
+      <dt>Search engine URI</dt>
+      <dd>${backendBean.getSearchEngineURI()}</dd>
+
+    </dl>
+
+    <h3>Installed policies:</h3>
+    <dl class="dl-horizontal" id="policyListing">
+      <ui:repeat value="${backendBean.getStoredPolicies()}" var="policy">
+        <dt>
+          <h:outputLink value="deletePolicy.xhtml"><i class="glyphicon glyphicon-remove"> </i>
+            <f:param name="fileName" value="${policy.getName()}" />
+          </h:outputLink>
+        </dt>
+        <dd>${policy.getName()}</dd>
+      </ui:repeat>
+    </dl>
+
+    <h3>Install a new policy:</h3>
+    <div class="blockquote-info">
+      Please keep in mind that any changes you make to the policies will not affect the operation of Polsearchine until the server has been restarted.
+    </div>
+    <h:form styleClass="form-inline" enctype="multipart/form-data">
+      <p:messages showDetail="true" autoUpdate="true" id="messages"/>
+      <!--
+      File uploads are being restricted to owl, xml and rdf. Jena technically
+      supports more filetypes, which could be added if needed.
+      @see https://jena.apache.org/documentation/io/index.html
+      -->
+      <p:fileUpload fileUploadListener="#{backendBean.handleFileUpload}"
+                    allowTypes="/(\.|\/)(owl|ttl|nt|nq|trig|rdf)$/"
+                    sizeLimit="2097152" label="Select policy…"
+                    auto="true"/>
+    </h:form>
+  </ui:define>
+</ui:composition>

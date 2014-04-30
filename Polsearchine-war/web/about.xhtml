@@ -1,0 +1,31 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="/resources/templates/pageTemplate.xhtml">
+
+
+
+  <ui:define name="preSearchForm">
+    <h2>About us</h2>
+    <div class="blockquote">
+      This web site features Polsearchine ("we/our/us"), a meta search engine developed for scientific purposes. It allows users to search the web while administrating users can regulate the search results. This regulation is based on policies which restrict or allow access to specific web sites and web pages. The noteworthy difference to the approaches implemented by other search engines is the transparency of filtering. Polsearchine informs the searching user that something is blocked, why it is blocked, by whom, and in what legal context.
+    </div>
+    <h2>Information collection and usage</h2>
+    <div id="privacyPolicy" class="blockquote">
+      Polsearchine does not store any data of any searches. We do not cooperate with any third party. The only personal information we store is a user's IP address if he/she tries to hack or manipulate our web site.<br />
+      In the future, a user's IP address might be used for determining his/her location for better search results. For example, this could be used for applying only policies that fit the user's country, allowing a more distinct regulation based on a user's local laws. Polsearchine may also use the IP address to prohibit searching for certain addresses due to legal resons. In this case, however, the IP addresses are not being stored. <br />
+      <h3>Cookies</h3>
+      <div class="blockquote">
+        Polsearchine does not use any permanent cookies. The only cookies being set are temporary. These are used to monitor the user's current session and are needed for our application to work. Features that result from this are the possibility to log in for administrating users and to remember search terms while navigating on the site.
+      </div>
+    </div>
+    <h2>Third party disclosure</h2>
+    <div id="searchEngineLegalText" class="blockquote"/>
+  </ui:define>
+
+  <ui:define name="customJS">
+    <script type="text/javascript">
+			initialiseTooltips();
+			insertSearchEngineLegalText();
+    </script>
+  </ui:define>
+</ui:composition>

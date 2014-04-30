@@ -1,0 +1,20 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="/resources/templates/pageTemplate.xhtml">
+
+  <ui:define name="pageHeadInserts">
+    <meta http-equiv="refresh" content="0;url=/index.xhtml" />
+  </ui:define>
+
+  <ui:insert name="pageTitle">
+    Polsearchine - Logout
+  </ui:insert>
+
+  <ui:define name="preSearchForm">
+    <h2>Logout processed</h2><br />
+    ${userLoginBean.invalidateSession()}
+    <p class="span5">
+      You have been logged out. If you see this, click on <a href="/index.xhtml">this link to continue</a>.
+    </p>
+  </ui:define>
+</ui:composition>  

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<application version="6" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/application_6.xsd">
+  <display-name>Polsearchine</display-name>
+  <module>
+    <web>
+      <web-uri>Polsearchine-war.war</web-uri>
+      <context-root/>
+    </web>
+  </module>
+  <module>
+    <ejb>Polsearchine-ejb.jar</ejb>
+  </module>
+  <env-entry>
+    <description>This value declares the absolute path to where the owl files are being stored. The directory must exist and the server must be able to read and write to this directory. If you need a more dynamic approach, you can calculate the path with System.getProperty("com.sun.aas.instanceRoot").</description>
+    <env-entry-name>OWL_PATH</env-entry-name>
+    <env-entry-type>java.lang.String</env-entry-type>
+    <env-entry-value>/opt/glassfish3/glassfish/domains/polsearchine/owl</env-entry-value>
+  </env-entry>
+  <env-entry>
+    <env-entry-name>POLICY_FILE_EXTENSION</env-entry-name>
+    <env-entry-type>java.lang.String</env-entry-type>
+    <env-entry-value>owl</env-entry-value>
+  </env-entry>
+  <env-entry>
+    <env-entry-name>SEARCH_ENGINE</env-entry-name>
+    <env-entry-type>java.lang.String</env-entry-type>
+    <env-entry-value>bing</env-entry-value>
+  </env-entry>
+  <env-entry>
+    <description>The API key used for searching with Bing. For some odd reasons this value is not being read. Therefore you will have to change it within the BingRetriever source code as well.</description>
+    <env-entry-name>BING_API_KEY</env-entry-name>
+    <env-entry-type>java.lang.String</env-entry-type>
+    <env-entry-value>ENTER YOUR BING API KEY HERE</env-entry-value>
+  </env-entry>
+  <env-entry>
+    <description>Restrict querying access to an IP address range by specifying how the searcher's IP address must start with. Setting the environment entry value to nothing (say null), disables any restrictions. Use "141.26." for allowing only University Koblenz-Landau IPs.</description>
+    <env-entry-name>IP_RESTRICTION_PATTERN</env-entry-name>
+    <env-entry-type>java.lang.String</env-entry-type>
+    <env-entry-value></env-entry-value>
+  </env-entry>
+  <env-entry>
+    <description>This value declares the absolute path to where the legal text of search engines is being stored. The directory must exist as well as at least one text file having the name matching the SEARCH_ENGINE value. The server needs read access on this directory. If you need a more dynamic approach, you can calculate the path with System.getProperty("com.sun.aas.instanceRoot").</description>
+    <env-entry-name>LEGAL_TEXT_PATH</env-entry-name>
+    <env-entry-type>java.lang.String</env-entry-type>
+    <env-entry-value>/opt/glassfish3/glassfish/domains/polsearchine/legalText</env-entry-value>
+  </env-entry>
+  <env-entry>
+    <description>This URI should reference the enforcing system itself. It will be used for showing information when results are being filtered due to their default rule.</description>
+    <env-entry-name>SEARCH_ENGINE_URI</env-entry-name>
+    <env-entry-type>java.lang.String</env-entry-type>
+    <env-entry-value>http://icp.it-risk.iwvi.uni-koblenz.de/policies/searchEngineMetaPolicy.owl#se-1</env-entry-value>
+  </env-entry>
+</application>

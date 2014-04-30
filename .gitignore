@@ -1,0 +1,30 @@
+# Java class files
+*.class
+
+# PDT-specific
+.buildpath
+
+lib/pphi_infoparser/pphi-1.0-jar-with-dependencies.jar
+
+nbproject/private/
+nbproject/build-impl.xml
+nbproject/ant-deploy.xml
+nbproject/genfiles.properties
+
+Polsearchine-ejb/dist/
+Polsearchine-war/dist/
+RemoteInterface/dist/
+
+Polsearchine-ejb/nbproject/private/
+Polsearchine-ejb/nbproject/build-impl.xml
+Polsearchine-ejb/nbproject/ant_deploy.xml
+Polsearchine-ejb/nbproject/genfiles.properties
+
+Polsearchine-war/nbproject/private/
+Polsearchine-war/nbproject/build-impl.xml
+Polsearchine-war/nbproject/ant_deploy.xml
+Polsearchine-war/nbproject/genfiles.properties
+
+RemoteInterface/nbproject/private/
+RemoteInterface/nbproject/build-impl.xml
+RemoteInterface/nbproject/genfiles.properties

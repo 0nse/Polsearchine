@@ -1,0 +1,44 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="/resources/templates/pageTemplate.xhtml">
+
+
+
+	<ui:define name="preSearchForm">
+		<h2>Imprint</h2>
+		<div class="blockquote">
+			Responsible for the content of this web site is the <a href="http://www.uni-koblenz-landau.de/uni/universitaetsleitung/praesident">president</a> of the University of Koblenz and Landau which is currently hold by Prof. Dr. Roman Heiligenthal. The postal address of this university is given below.
+			<div class="address">
+				Isaac-Fulda-Allee 3<br />
+				55124 Mainz<br />
+				Postfach 1864<br />
+				55008 Mainz<br />
+			</div>
+			Among this postal address, a telephone number or a fax number as well as an e-mail address may also prove useful.
+			<div class="address">
+				Telephone: 06131 37460-0<br />
+				Fax: 06131 37460-40<br />
+				E-mail: <a href="mailto:service@uni-koblenz-landau.de">service[at]uni-koblenz-landau.de</a><br />
+			</div>
+			Furthermore, the German equivalent to the University's VATIN, the USt-IdNr., is DE 153 901 674.<br />
+			<br />
+			Technical support is provided by the developer and his supervisor.
+			<div class="address">
+				Andreas Kasten (Supervisor)<br />
+				E-mail: <a href="mailto:andreas.kasten@uni-koblenz-landau.de">andreas.kasten[at]uni-koblenz-landau.de</a><br />
+			</div>
+			<div class="address">
+				Michael Ruster (Developer)<br />
+				E-mail: <a href="mailto:mruster@uni-koblenz.de">mruster[at]uni-koblenz-landau.de</a>
+			</div>
+
+		</div>
+	</ui:define>
+
+	<ui:define name="customJS">
+		<script type="text/javascript">
+			initialiseTooltips();
+			insertSearchEngineLegalText();
+		</script>
+	</ui:define>
+</ui:composition>

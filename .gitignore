@@ -28,3 +28,6 @@ Polsearchine-war/nbproject/genfiles.properties
 RemoteInterface/nbproject/private/
 RemoteInterface/nbproject/build-impl.xml
 RemoteInterface/nbproject/genfiles.properties
+/build/
+/RemoteInterface/build/
+/Polsearchine-war/build/
